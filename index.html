@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta value="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WEB API - DW</title>
+    <link rel="stylesheet" href="./style/geral.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav id="navBar">
+        <ul class="nav-links">
+            <li style="margin-left: auto;"><a href="#">DW - MDM 2023/24</a></li>
+        </ul>
+        <div>
+            <h1>RICK AND MORTY<br />WEB API</h1>
+            <div class="search-container">
+                <div>
+                    <i class="fa-solid fa-magnifying-glass" style="color: black"></i>
+                    <input type="search" id="search-input" class="hidden" />
+                    <button id="ordenarBtn"><span class="material-icons">sort_by_alpha</span></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="tudo">
+        <form id="filtros">
+            <h4>filter by</h4>
+            <ul>
+                <li>
+                    <fieldset id="status">
+                        <h5>status</h5>
+                        <ul>
+                            <li>
+                                <label for="alive">alive</label>
+                                <input name="status" type="radio" value="alive" id="alive">
+                            </li>
+                            <li>
+                                <label for="dead">dead</label>
+                                <input name="status" type="radio" value="dead" id="dead">
+                            </li>
+                            <li>
+                                <label for="unknown">unknown</label>
+                                <input name="status" type="radio" value="unknown" id="unknown">
+                            </li>
+                        </ul>
+                    </fieldset>
+                </li>
+                <li>
+                    <fieldset id="gender">
+                        <h5>gender</h5>
+                        <ul>
+                            <li>
+                                <label for="female">female</label>
+                                <input name="gender" type="radio" value="female" id="female">
+                            </li>
+                            <li>
+                                <label for="male">male</label>
+                                <input name="gender" type="radio" value="male" id="male">
+                            </li>
+                            <li>
+                                <label for="genderless">genderless</label>
+                                <input name="gender" type="radio" value="genderless" id="genderless">
+                            </li>
+                            <li>
+                                <label for="unknown2">unknown</label>
+                                <input name="gender" type="radio" value="unknown2" id="unknown2">
+                            </li>
+                        </ul>
+                    </fieldset>
+                </li>
+                <li>
+                    <fieldset id="species">
+                        <h5>species</h5>
+                        <ul>
+                            <li>
+                                <label for="human">human</label>
+                                <input name="species" type="radio" value="human" id="human">
+                            </li>
+                            <li>
+                                <label for="alien">alien</label>
+                                <input name="species" type="radio" value="alien" id="alien">
+                            </li>
+                        </ul>
+                    </fieldset>
+                </li>
+            </ul>
+        </form>
+        <div id="imagensContainer"></div>
+    </div>
+    <div id="navegadorPaginas">
+        <button>
+            <i class="fa-solid fa-chevron-left fa-2xl" style="color: #000000"></i><!--esquerda -->
+        </button>
+        <span class="numPagina"></span>
+        <button>
+            <i class="fa-solid fa-chevron-right fa-2xl" style="color: #000000"></i><!--direita -->
+        </button>
+    </div>
+</body>
+
+<script>
+    let personagensAtuais = [];
+    let filtragem = {
+        name: "",
+        status: "",
+        species: "",
+        type: "",
+        gender: "",
+    };
+</script>
+<script>
+    const barraPesquisa = document.querySelector("input[type=search]");
+
+    barraPesquisa.oninput = (e) => {
+        filtragem.name = barraPesquisa.value;
+        paginas.atual = 1;
+        setPagina(paginas.atual);
+        setOnImagensContainer(paginas.atual);
+    };
+
+</script>
+<script src="./js/fetchs.js"></script>
+<script src="./js/setImagens.js"></script>
+<script src="./js/filters.js"></script>
+
+</html>
